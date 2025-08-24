@@ -4,10 +4,13 @@
 
 @layer base {
   * {
-    @apply border-border;
+    box-sizing: border-box;
   }
   body {
-    @apply bg-background text-foreground;
+    margin: 0;
+    padding: 0;
+    background-color: #0F5132;
+    color: white;
   }
 }
 
@@ -17,19 +20,5 @@
   }
   .safe-area-bottom {
     padding-bottom: env(safe-area-inset-bottom);
-  }
-}
-
-:root {
-  --background: 0 0% 100%;
-  --foreground: 222.2 84% 4.9%;
-  --border: 214.3 31.8% 91.4%;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
   }
 }
