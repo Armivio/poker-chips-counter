@@ -61,32 +61,40 @@ npm run dev
 
 Visit `http://localhost:3000`
 
-## Production Deployment (Vercel)
+## Production Deployment (Firebase Hosting)
 
-### 1. Install Vercel CLI
+### 1. Install Firebase CLI
 ```bash
-npm i -g vercel
+npm install -g firebase-tools
 ```
 
-### 2. Deploy
+### 2. Login to Firebase
 ```bash
-vercel
+firebase login
 ```
 
-### 3. Set Production Environment Variables
+### 3. Enable Firestore Database
+1. Go to [Firebase Console](https://console.firebase.google.com/project/poker-chips-counter)
+2. Navigate to Firestore Database → Create database
+3. Choose "Start in test mode"
+4. Select your preferred region
 
-Create `.env.production` with your Firebase config (same format as `.env.local`).
-
-Then run the secrets deployment script:
+### 4. Deploy to Firebase Hosting
 ```bash
-node scripts/deploy-secrets.js
+npm run deploy
 ```
 
-This securely uploads your environment variables to Vercel without storing them in git.
+This will:
+- Build the Next.js app for static export
+- Deploy to Firebase Hosting
+- Deploy Firestore security rules
 
-### 4. Deploy Production
+Your app will be available at: `https://poker-chips-counter.web.app`
+
+### Alternative: Manual Deploy
 ```bash
-vercel --prod
+npm run build
+firebase deploy --only hosting
 ```
 
 ## Firebase Security Rules
